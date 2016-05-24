@@ -32,14 +32,23 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
   // Each state's controller can be found in controllers.js
   $stateProvider
 
-  // setup an abstract state for the tabs directive
-    .state('tab', {
+  .state('signin', {
+    url: '/signin',
+    templateUrl: 'templates/signin.html',
+    controller: 'signInCtrl'
+  })
+
+
+  .state('signup', {
+    url: '/signup',
+    templateUrl: 'templates/signup.html'
+  })
+
+  .state('tab', {
     url: '/tab',
     abstract: true,
     templateUrl: 'templates/tabs.html'
   })
-
-  // Each tab has its own nav history stack:
 
   .state('tab.home', {
     url: '/home',
@@ -52,23 +61,23 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
   })
 
   .state('tab.location', {
-      url: '/location',
-      views: {
-        'tab-location': {
-          templateUrl: 'templates/tab-location.html',
-          controller: 'locationCtrl'
-        }
+    url: '/location',
+    views: {
+      'tab-location': {
+        templateUrl: 'templates/tab-location.html',
+        controller: 'locationCtrl'
       }
-    })
-    // .state('tab.chat-detail', {
-    //   url: '/chats/:chatId',
-    //   views: {
-    //     'tab-chats': {
-    //       templateUrl: 'templates/chat-detail.html',
-    //       controller: 'ChatDetailCtrl'
-    //     }
-    //   }
-    // })
+    }
+  })
+  // .state('tab.chat-detail', {
+  //   url: '/chats/:chatId',
+  //   views: {
+  //     'tab-chats': {
+  //       templateUrl: 'templates/chat-detail.html',
+  //       controller: 'ChatDetailCtrl'
+  //     }
+  //   }
+  // })
 
   .state('tab.camera', {
     url: '/camera',
@@ -81,6 +90,6 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
   });
 
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/tab/home');
+  $urlRouterProvider.otherwise('/signin');
 
 });

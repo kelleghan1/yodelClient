@@ -8,7 +8,19 @@ angular.module('starter.controllers', ['ionic', 'ngCordova'])
 
 
 
-.controller('signInCtrl', function($scope, $state, $http) {
+.controller('signInCtrl', function($scope, $state, $http,$log) {
+  $scope.user = {}
+  var userData = $scope.user
+  $scope.login = function() {
+    $log.info('function fired!')
+    $log.info(userData)
+    $http.post('http://yodelappbcjmm.herokuapp.com/newlocation',userData)
+      .then(function(data){
+        console.log(data);
+        $state.go('tab.home')
+      })
+  }
+
 
 
 })
