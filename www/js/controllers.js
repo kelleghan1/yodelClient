@@ -14,11 +14,30 @@ angular.module('starter.controllers', ['ionic', 'ngCordova'])
   $scope.login = function() {
     $log.info('function fired!')
     $log.info(userData)
-    $http.post('http://yodelappbcjmm.herokuapp.com/newlocation',userData)
-      .then(function(data){
-        console.log(data);
-        $state.go('tab.home')
-      })
+    $http.get('http://yodelappbcjmm.herokuapp.com/newlocation',userData)
+    .then(function(data){
+      console.log(data);
+      $state.go('tab.home')
+    })
+  }
+
+
+
+})
+
+.controller('signUpCtrl', function($scope, $state, $http, $log) {
+  $scope.user = {}
+  $scope.signUp = function() {
+    var userData = $scope.user
+    // $log.info('function fired!')
+    // $log.info(userData)
+    // var userData = $scope.user.password;
+    console.log(userData);
+    $http.post('http://yodelappbcjmm.herokuapp.com/signup', userData)
+    .then(function(data){
+      console.log(data);
+      $state.go('tab.home')
+    })
   }
 
 
@@ -39,8 +58,6 @@ angular.module('starter.controllers', ['ionic', 'ngCordova'])
     .getCurrentPosition(posOptions)
     .then(function (position) {
       $scope.newLocation = {};
-      var lat  = position.coords.latitude;
-      var long = position.coords.longitude;
       $scope.newLocation.long = position.coords.longitude;
       $scope.newLocation.lat = position.coords.latitude;
       var newLocation = $scope.newLocation;
@@ -48,7 +65,6 @@ angular.module('starter.controllers', ['ionic', 'ngCordova'])
       $http.post('http://yodelappbcjmm.herokuapp.com/newlocation', newLocation)
       .then(function(result){
         $scope.result = result;
-        console.log('CHECKING' + result);
       })
 
     }, function(err) {
