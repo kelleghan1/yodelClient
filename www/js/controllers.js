@@ -3,10 +3,10 @@ angular.module('starter.controllers', ['ionic', 'ngCordova'])
 .controller('homeCtrl', function($scope,$http,$log) {
   // $scope.pagecontent = 'Home';
   $http.get('http://yodelappbcjmm.herokuapp.com')
-    .then(function(data){
-      $log.info('fromt the get request',data.data)
-      $scope.users = data.data
-    })
+  .then(function(data){
+    $log.info('fromt the get request',data.data)
+    $scope.users = data.data
+  })
 
 })
 
@@ -63,6 +63,10 @@ angular.module('starter.controllers', ['ionic', 'ngCordova'])
 
   }
 
+})
+
+.controller('chatCtrl', function($scope, $http) {
+  $scope.chat = Chats.get($stateParams.chatId);
 })
 
 

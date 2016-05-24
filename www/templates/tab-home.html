@@ -1,7 +1,6 @@
 <ion-view view-title="Home">
-    <ion-content >
-    {{pagecontent}}
-    <ion-item class="item col-lg" ng-repeat="user in users" href="/#/chat">
+  <ion-content >
+    <ion-item class="item col-lg" ng-repeat="user in users" href="/#/chat/{{this.id}}">
       userID: {{user.id}} <br>
       userName: {{user.username}} <br>
       LAT: {{user.lat}} <br>
