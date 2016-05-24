@@ -8,6 +8,13 @@ angular.module('starter.controllers', ['ionic', 'ngCordova'])
 
 
 
+.controller('signInCtrl', function($scope, $state, $http) {
+
+
+})
+
+
+
 .controller('locationCtrl', function($scope, $http, $cordovaGeolocation) {
 
   $scope.takeLocation = function() {
@@ -29,7 +36,7 @@ angular.module('starter.controllers', ['ionic', 'ngCordova'])
       $http.post('http://yodelappbcjmm.herokuapp.com/newlocation', newLocation)
       .then(function(result){
         $scope.result = result;
-        console.log(result);
+        console.log('CHECKING' + result);
       })
 
     }, function(err) {
