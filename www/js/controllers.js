@@ -16,8 +16,6 @@ angular.module('starter.controllers', ['ionic', 'ngCordova'])
     })
   }
 
-
-
 })
 
 .controller('signUpCtrl', function($scope, $state, $http, $log) {
@@ -29,10 +27,7 @@ angular.module('starter.controllers', ['ionic', 'ngCordova'])
       $state.go('tab.home')
     })
   }
-
 })
-
-
 
 .controller('locationCtrl', function($scope, $http, $cordovaGeolocation) {
 
