@@ -11,7 +11,7 @@ angular.module('starter.controllers', ['ionic', 'ngCordova'])
 })
 
 
-.controller('signInCtrl', function($scope, $state, $http,$log) {
+.controller('signInCtrl', function($scope, $state, $http, $log) {
   $scope.user = {}
   var userData = $scope.user
   $scope.login = function() {
@@ -29,6 +29,8 @@ angular.module('starter.controllers', ['ionic', 'ngCordova'])
     var userData = $scope.user
     $http.post('http://yodelappbcjmm.herokuapp.com/signup', userData)
     .then(function(data){
+      console.log(data.data);
+      localStorage.setItem('Token', data.data.token);
       $state.go('tab.home')
     })
   }
