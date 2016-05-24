@@ -1,22 +1,17 @@
 angular.module('starter.controllers', ['ionic', 'ngCordova'])
 
 .controller('homeCtrl', function($scope) {
-
   $scope.pagecontent = 'Home';
 
 })
-
 
 
 .controller('signInCtrl', function($scope, $state, $http,$log) {
   $scope.user = {}
   var userData = $scope.user
   $scope.login = function() {
-    $log.info('function fired!')
-    $log.info(userData)
     $http.get('http://yodelappbcjmm.herokuapp.com/newlocation',userData)
     .then(function(data){
-      console.log(data);
       $state.go('tab.home')
     })
   }
@@ -29,18 +24,11 @@ angular.module('starter.controllers', ['ionic', 'ngCordova'])
   $scope.user = {}
   $scope.signUp = function() {
     var userData = $scope.user
-    // $log.info('function fired!')
-    // $log.info(userData)
-    // var userData = $scope.user.password;
-    console.log(userData);
     $http.post('http://yodelappbcjmm.herokuapp.com/signup', userData)
     .then(function(data){
-      console.log(data);
       $state.go('tab.home')
     })
   }
-
-
 
 })
 
